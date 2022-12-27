@@ -1,0 +1,12 @@
+.product-cont:hover .product-box img {
+    transform: scale(1.2);
+}
+.buyBtn {
+    background: rgb(112,19,19);
+    background: linear-gradient(338deg, rgba(112,19,19,1) 0%, rgba(255,161,67,1) 58%);
+}
+.buyBtn:hover {
+    background: white;
+    color: rgb(112,19,19);
+    border: 1px solid rgb(112,19,19);
+}
