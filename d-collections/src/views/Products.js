@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "../assets/css/products.css";
 
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setIsLoading] = useState(false);
+  // const [select, setSelect] = useState(data);
   let componentMounted = true;
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const Products = () => {
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
+        // setSelect(await response.json());
         console.log(filter);
         setIsLoading(false);
       }
@@ -51,7 +54,11 @@ const Products = () => {
       </>
     );
   };
-
+  const filterProduct = (cat) => {
+    const updatedList = data.filter((prd) => prd.category === cat);
+    console.log(updatedList);
+    setFilter(updatedList);
+  };
   return (
     <>
       <div>
@@ -70,11 +77,15 @@ const Products = () => {
           <select
             id="small"
             class="block w-40 p-2 mb-6 text-sm text-white focus:ring-0  focus:border-0 focus:outline-none rounded-sm bg-[#701313]"
+            onChange={(e) => {
+              filterProduct(e.target.value);
+            }}
           >
-            <option selected>Men's cloth</option>
-            <option value="US">Women's cloth</option>
-            <option value="CA">Electronics</option>
-            <option value="CA">Jewelery</option>
+            <option value={()=>setFilter(data)}>All</option>
+            <option value="men's clothing">Men's clothing</option>
+            <option value="women's clothing">Women's clothing</option>
+            <option value="jewelery">Jewelery</option>
+            <option value="electronics">Electronic</option>
           </select>
         </div>
         <div>
@@ -86,9 +97,9 @@ const Products = () => {
             </div>
           ) : (
             <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 w-full">
-              {filter.map((product, key) => (
+              {filter.map((product) => (
                 <div
-                  key={key}
+                  key={product.id}
                   className="bg-white border border-gray-200 w-[80%] rounded-lg ml-auto mr-auto shadow-md mb-5 product-cont ease-in-out duration-300"
                 >
                   <div className="flex justify-center text-center items-center product-box overflow-hidden">
@@ -109,8 +120,8 @@ const Products = () => {
                     <p className="mb-3 font-semibold text-[#701313]">
                       ${product.price}
                     </p>
-                    <a
-                      href="#"
+                    <NavLink
+                      to={`/products/${product.id}`}
                       className="ease-in-out duration-200 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none buyBtn border"
                     >
                       Buy Now
@@ -127,7 +138,7 @@ const Products = () => {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                    </a>
+                    </NavLink>
                   </div>
                 </div>
               ))}

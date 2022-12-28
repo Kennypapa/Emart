@@ -1,8 +1,11 @@
 import { Fragment } from "react";
+import Navbar from "../component/Navbar";
 import model from ".././assets/images/d-model.png";
+import Products from "./Products";
 const Home = () => {
   return (
     <Fragment>
+      <Navbar />
       <div className="lg:h-[700px] h-auto bg-[#f5dac0] mt-[89px] relative">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 lg:h-[700px] h-auto">
           <div className="lg:h-[700px] h-auto lg:pt-0 pt-24 flex lg:justify-start w-full justify-center lg:items-center items-end">
@@ -27,6 +30,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Products />
     </Fragment>
   );
 };

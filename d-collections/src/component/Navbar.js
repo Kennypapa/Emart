@@ -1,4 +1,5 @@
 import "../assets/css/navbar.css";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav
@@ -6,12 +7,12 @@ const Navbar = () => {
       id="navbar"
     >
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="https://flowbite.com/" className="flex items-center lg:pl-14 pl-4">
+        <NavLink to="" href="https://flowbite.com/" className="flex items-center lg:pl-14 pl-4">
           <i class="fa-solid fa-cart-shopping text-[#701313]"></i>
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white pl-2">
             D-COLLLECTION
           </span>
-        </a>
+        </NavLink>
         <div className="flex md:order-2 justify-end items-center lg:w-auto md:w-full lg:mr-0 mr-3 mt-2">
           <button
             type="button"
@@ -54,37 +55,37 @@ const Navbar = () => {
         >
           <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 lg:mr-0 mr-3">
             <li>
-              <a
+              <NavLink to="/"
                 href="#"
                 className="block py-2 pl-3 pr-4  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-[#701313] text-base"
                 aria-current="page"
               >
                 Home
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
+              <NavLink to="/products"
                 href="#"
                 className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 text-[#701313]  md:p-0  text-base"
               >
                 Products
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
+              <NavLink to=""
                 href="#"
                 className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 text-[#701313]  md:p-0  text-base"
               >
                 About
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
+              <NavLink to=""
                 href="#"
                 className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 text-[#701313]  md:p-0  text-base"
               >
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
