@@ -16,7 +16,7 @@ const Product = () => {
       setIsLoading(false);
     };
     getProducts();
-  }, []);
+  }, [id]);
 
   const addItemHandler = (state) => {
     dispatch(cartActions.ADDITEM(product))
@@ -25,15 +25,37 @@ const Product = () => {
   return (
     <div>
       {loading ? (
-        <div>Loading....</div>
+        
+        <div role="status" class="space-y-8 animate-pulse mt-[125px] w-full">
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
+                <div class="lg:h-[500px] md:h-[450px] h-[370px]  lg:w-[500px] md:w-[450px] w-[370px] mx-auto bg-gray-300 rounded sm:w-96 dark:bg-gray-700 flex justify-center items-center">
+                    <svg class="w-12 h-12 text-gray-200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 640 512"><path d="M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006 486.1 .0006 456.1L0 456.1z"/></svg>
+                </div>
+                <div  className="h-[500px] lg:pl-0 pl-10 flex justify-start items-center">
+                    <div class="w-full">
+                        <div class="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-6"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[280px] mb-2.5"></div>
+                        <div class="h-[50px] w-[70px] bg-gray-200 rounded-sm dark:bg-gray-700 mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+                        <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+                        <div className="flex">
+                        <div class="h-[40px] bg-gray-200 rounded-sm dark:bg-gray-700 w-[120px] mr-6"></div>
+                        <div class="h-[40px] bg-gray-200 rounded-sm dark:bg-gray-700 w-[90px]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
       ) : (
-        <div className="mt-[89px]"> 
-          <div className="grid lg:grid-cols-2 grid-cols-1 gri gap-5">
+        <div className="mt-[125px]"> 
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
             <div className="lg:h-[500px] md:h-[450px] h-[370px]  lg:w-[500px] md:w-[450px] w-[370px] mx-auto ">
               <img src={product.image} alt={product.title} className="w-full h-full" />
             </div>
 
-            
+
             <div className="h-[500px] lg:pl-0 pl-10 flex justify-start items-center">
               <div>
                 <p className="uppercase text-3xl font-bold font-[Poppins] mb-5">{product.category}</p>

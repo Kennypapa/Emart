@@ -7,6 +7,7 @@ import Home from './views/Home';
 import Products from './views/Products';
 import Product from './views/Product';
 import About from './views/About'; 
+import Cart from './views/Cart';
 import Contact from './views/Contact'; 
 import reportWebVitals from './reportWebVitals';
 import store from './store/index';
@@ -26,6 +27,7 @@ root.render(
             <Route path='/products/:id' element={<Product/>}></Route>
             <Route path='/about-us' element={<About/>}></Route>
             <Route path='/contact' element={<Contact/>}></Route>
+            <Route path='/cart' element={<Cart/>}></Route>
           </Route>
         
       </Routes>
