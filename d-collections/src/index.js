@@ -6,22 +6,31 @@ import App from './App';
 import Home from './views/Home';
 import Products from './views/Products';
 import Product from './views/Product';
+import About from './views/About'; 
+import Contact from './views/Contact'; 
 import reportWebVitals from './reportWebVitals';
-
+import store from './store/index';
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(
   document.getElementById('root')
 );
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<App/>}>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/products' element={<Products />}></Route>
-          <Route path='/products/:id' element={<Product/>}></Route>
-        </Route>
+      
+          <Route path='' element={<App/>}>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/products' element={<Products />}></Route>
+            <Route path='/products/:id' element={<Product/>}></Route>
+            <Route path='/about-us' element={<About/>}></Route>
+            <Route path='/contact' element={<Contact/>}></Route>
+          </Route>
+        
       </Routes>
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

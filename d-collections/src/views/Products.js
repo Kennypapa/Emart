@@ -6,7 +6,6 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setIsLoading] = useState(false);
-  // const [select, setSelect] = useState(data);
   let componentMounted = true;
 
   useEffect(() => {
@@ -16,7 +15,6 @@ const Products = () => {
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
-        // setSelect(await response.json());
         console.log(filter);
         setIsLoading(false);
       }
