@@ -18,9 +18,18 @@ const Product = () => {
     getProducts();
   }, [id]);
 
-  const addItemHandler = (state) => {
-    dispatch(cartActions.ADDITEM(product))
+  const addItemHandler = () => {
+    dispatch(cartActions.ADDITEM(product));
+    let showCart = [];
+    let showProducts = product;
+    showCart.push(showProducts);
+    showCart = showCart.concat(JSON.parse(localStorage.getItem('products') || '[]'));
+    console.log(showCart);  
+
+    localStorage.setItem('products', JSON.stringify(showCart));
   }
+
+
 
   return (
     <div>
@@ -46,7 +55,7 @@ const Product = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
 
       ) : (
         <div className="mt-[125px]"> 

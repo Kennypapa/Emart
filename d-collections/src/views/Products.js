@@ -105,7 +105,7 @@ const Products = () => {
                       <img
                         className="rounded-t-lg h-[250px] ease-in-out duration-300"
                         src={product.image}
-                        alt=""
+                        alt={product.title}
                       />
                     </a>
                   </div>

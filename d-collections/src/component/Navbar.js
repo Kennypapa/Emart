@@ -29,7 +29,7 @@ const Navbar = () => {
               className="text-white  bg-transparent focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 lg:py-2.5 py-2  text-center border border-white hover:bg-white hover:text-black"
             >
               <i class="fa-solid fa-cart-shopping"></i>Cart({showCart.length})
-            </button>
+            </button>  
           </NavLink>
           <button
             data-collapse-toggle="navbar-sticky"
