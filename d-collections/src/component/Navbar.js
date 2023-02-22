@@ -3,7 +3,7 @@ import "../assets/css/navbar.css";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
-  const showCart = useSelector((state) => state);
+  const showCart = useSelector((state) => state.cartState);
   return (
     <nav
       className="lg:h-[90px] md:h-[auto] sm:h-auto h-[90px] py-4 px-0 fixed w-full z-20 top-0 left-0 border-b border-gray-200"

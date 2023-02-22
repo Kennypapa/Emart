@@ -18,15 +18,8 @@ const Product = () => {
     getProducts();
   }, [id]);
 
-  const addItemHandler = () => {
-    dispatch(cartActions.ADDITEM(product));
-    let showCart = [];
-    let showProducts = product;
-    showCart.push(showProducts);
-    showCart = showCart.concat(JSON.parse(localStorage.getItem('products') || '[]'));
-    console.log(showCart);  
-
-    localStorage.setItem('products', JSON.stringify(showCart));
+  const addToCartHandler = (product) => {
+    dispatch(cartActions.ADDTOCART(product));
   }
 
 
@@ -92,7 +85,7 @@ const Product = () => {
                 <button
                     type="button"
                     className="text-white mr-4 bg-[#701313] focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-sm text-sm px-5 lg:py-2.5 py-2  text-center border border-white hover:bg-white hover:text-black  hover:border-[#701313]"
-                    onClick={addItemHandler}
+                    onClick={()=>addToCartHandler()}
                 >
                 <i class="fa-solid fa-cart-shopping"></i>Add to Cart
                 </button>

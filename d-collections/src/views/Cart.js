@@ -1,30 +1,21 @@
 import {useEffect, useState } from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import { cartActions } from "../store/index";
+
 const Cart = () => {
-  const listProducts = localStorage.getItem("products") || '[]';
-  const [cart, setCart] = useState([]);
-  let products = JSON.parse(listProducts);
-  const handleRemoveProduct = () => {
-    // const filtered = cart.filter(prd => prd.id === products.id);
-    // localStorage.setItem('items', JSON.stringify(filtered));
-    // if(filtered === 1){
-    //   setCart(cart.filter(prd => prd.id === products.id));
-    //   console.log(setCart)
-    // } 
-    
+  const dispatch = useDispatch();
+  // const listProducts = localStorage.getItem("products") || '[]';
+  // let products = JSON.parse(listProducts);
+  const product = useSelector((state) => state.cartState)
+  console.log(product);
+  const addProductHandler = () => {
+   dispatch(cartActions.ADDITEM());
   }
-  const handleAddProduct = () => {
-
-  }
-
-
-  useEffect(()=> {
-    console.log('cart change');
-  }, [cart]);
   return (
     <div>
       <div className=" mt-[89px] w-[60%] mx-auto ">
         {
-            products.map((prd) => 
+            product.map((prd) => 
             (
                 <div key={prd.id} className="max-h-[300px] flex justify-center items-center" >
                     <div className="lg:h-[300px] md:h-[400px] h-[370px] w-[600px] mr-6">
@@ -36,15 +27,10 @@ const Cart = () => {
                         </div>
                         <div className="flex">
                           <div className="flex">
-                            <button  onClick={()=> handleAddProduct(prd)}  className="px-4 py-2 border border-[#701313]  hover:bg-[#701313] hover:text-white ease duration-200">
-                              +
-                            </button>
-                            <button onClick={()=> handleRemoveProduct(prd)} className="px-4 py-2 border border-[#701313] hover:bg-[#701313] hover:text-white ease duration-200 mr-5">
-                              -
-                            </button>
-                          </div>
-                          <div className="flex">
                             <p className="text-2xl">2 x ${prd.price}</p>
+                          </div>
+                          <div>
+                            <button onClick={addProductHandler}>+</button>
                           </div>
                         </div>
                     </div>
@@ -59,7 +45,7 @@ const Cart = () => {
       </div>
       <div>
          {
-            products.length === 0 && 
+            product.length === 0 && 
             <p className="text-3xl text-center">No items are added</p>
          }
       </div>
